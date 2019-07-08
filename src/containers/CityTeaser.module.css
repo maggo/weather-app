@@ -1,0 +1,8 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr max-content max-content;
+  grid-gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid gray;
+  align-items: center;
+}

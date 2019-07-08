@@ -1,0 +1,25 @@
+.container {
+  margin-bottom: 1.5rem;
+}
+
+.textarea {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: inherit;
+  line-height: 1.5;
+}
+
+.noteList {
+  margin-bottom: 1.5rem;
+}
+
+.note {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  grid-gap: 1rem;
+  padding: 1rem 0;
+}
+
+.note:not(:last-child) {
+  border-bottom: 1px solid grey;
+}

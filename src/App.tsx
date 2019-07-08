@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { Provider } from "react-redux";
+import { CityDetail } from "./containers/CityDetail";
+import { Overview } from "./containers/Overview";
+import { configureStore } from "./store/configureStore";
+
+const store = configureStore();
+
+function getCityFromUrl() {
+  return decodeURI(window.location.hash.substr(1));
+}
 
 const App: React.FC = () => {
+  const [currentCity, setCurrentCity] = useState(getCityFromUrl());
+  useEffect(() => {
+    const onHashChange = (e: HashChangeEvent) => {
+      setCurrentCity(getCityFromUrl());
+    };
+
+    window.addEventListener("hashchange", onHashChange);
+
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      {currentCity ? <CityDetail city={currentCity} /> : <Overview />}
+    </Provider>
   );
-}
+};
 
 export default App;

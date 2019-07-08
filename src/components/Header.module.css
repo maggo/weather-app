@@ -1,0 +1,12 @@
+.header {
+  display: grid;
+  grid-template-columns: 45px 1fr max-content;
+  grid-gap: 1rem;
+  align-items: center;
+
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
